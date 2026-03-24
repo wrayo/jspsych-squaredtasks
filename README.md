@@ -79,6 +79,59 @@ Data and then auto-advances the survey page at the end of the task so the data
 is committed with the response. The exact structure and field list are
 documented in `qualtrics-v7/QUALTRICS_SETUP.md`.
 
+### Per-trial JSON fields
+
+The six block-level JSON fields are:
+
+- `squared_practice_stroop_json`
+- `squared_stroop_json`
+- `squared_practice_flanker_json`
+- `squared_flanker_json`
+- `squared_practice_simon_json`
+- `squared_simon_json`
+
+Each field stores a JSON array of trial objects for one block only.
+
+| Variable | Saved in per-trial JSON? | Notes |
+| --- | --- | --- |
+| `rt` | Yes | Stored once per trial. |
+| `response` | Yes | `0` = left choice, `1` = right choice. |
+| `trial_index` | Yes | Preserved from jsPsych. |
+| `time_elapsed` | Yes | jsPsych elapsed time in milliseconds from task start. |
+| `trial_recorded_at` | Yes | ISO 8601 wall-clock timestamp when the trial row is finalized. |
+| `participant_id` | Yes | Included on every saved trial record. |
+| `task` | Yes | `stroop`, `flanker`, or `simon`. |
+| `block_trial_count` | Yes | `0` indicates the block timed out on that trial. |
+| `practice` | Yes | `1` = practice, `0` = main block. |
+| `item` | Yes | Original item index is preserved. |
+| `stim` | Yes | For Flanker and Simon, this stores the sign version of the stimulus. |
+| `resp1` | Yes | For Flanker, this stores the sign version of the left choice. |
+| `resp2` | Yes | For Flanker, this stores the sign version of the right choice. |
+| `correct_response` | Yes | `0` = left choice, `1` = right choice. |
+| `condition` | Yes | Values `1` through `4`. |
+| `accuracy` | Yes | `0` = incorrect, `1` = correct. |
+| `timeout` | Yes | `1` means the block ended during that trial. |
+| `score_after_trial` | Yes | Running score is preserved per trial. |
+| `stimcolor` | Yes, when relevant | Stroop only. |
+| `resp1color` | Yes, when relevant | Stroop only. |
+| `resp2color` | Yes, when relevant | Stroop only. |
+| `location` | Yes, when relevant | Simon only. |
+
+### Summary fields
+
+These variables are saved in `squared_summary_json`, and the main-block score
+and mean RT values are also duplicated into dedicated Embedded Data fields.
+
+| Variable | Saved in summary fields? | Notes |
+| --- | --- | --- |
+| `score_final` | Yes | Stored for practice and main blocks; main-block values are also surfaced as task-level score fields. |
+| `meanrt_final` | Yes | Stored for practice and main blocks; main-block values are also surfaced as task-level mean RT fields. |
+| `score_x` | Yes, under a nested summary name | Stored as `condition_1.score` through `condition_4.score`. |
+| `meanrt_x` | Yes, under a nested summary name | Stored as `condition_1.mean_rt` through `condition_4.mean_rt`. |
+
+For the full comparison against the original `squared_jspsych` variable list,
+see `qualtrics-v7/QUALTRICS_SETUP.md`.
+
 ## GitHub Pages
 
 The repository includes a GitHub Pages workflow at
