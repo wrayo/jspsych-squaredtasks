@@ -49,7 +49,10 @@ publicly reachable over HTTPS.
    `squared_flanker_json`
    `squared_practice_simon_json`
    `squared_simon_json`
-6. Publish and test using the anonymous survey link, not only the Qualtrics editor preview.
+6. Keep the task question on its own page. The wrapper will call `clickNextButton()`
+   when the task ends, so Qualtrics should move directly to the next real block or
+   the end-of-survey screen without a separate completion question.
+7. Publish and test using the anonymous survey link, not only the Qualtrics editor preview.
 
 ## Data note
 
