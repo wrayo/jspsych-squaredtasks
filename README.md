@@ -134,7 +134,10 @@ see `qualtrics-v7/QUALTRICS_SETUP.md`.
 
 ## GitHub Pages
 
-The repository includes a GitHub Pages workflow at
-`.github/workflows/deploy-pages.yml`. Once the repo is pushed to GitHub, enable
-Pages and use the resulting site URL as the `assetBaseUrl` in
-`qualtrics-v7/squared-qualtrics.js`.
+Hosted assets for this repository are served via GitHub Pages at
+https://wrayo.github.io/jspsych-squaredtasks/.
+
+If you fork this repository for your own deployment, enable GitHub Pages for
+the fork and update the `assetBaseUrl` in `qualtrics-v7/squared-qualtrics.js`
+to match your own site URL. The Pages workflow used by this repository lives at
+`.github/workflows/deploy-pages.yml`.
