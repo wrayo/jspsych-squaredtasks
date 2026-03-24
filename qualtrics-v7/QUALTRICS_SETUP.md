@@ -1,0 +1,53 @@
+# Qualtrics Setup for Squared Tasks
+
+This folder contains the hosted asset bundle for embedding the Squared task
+battery into a Qualtrics survey.
+
+## Important implementation note
+
+The original Squared task code you provided is a working `jsPsych 7.3.1`
+implementation. The surrounding Qualtrics wrapper follows the same ideas as the
+Kyoung Whan Choe tutorial, but the task itself stays on `jsPsych 7` so that we
+preserve the original battery instead of rewriting it to `jsPsych 6`.
+
+## Files
+
+- `squared-v7-task.js`
+  Original task logic adapted for a configurable Qualtrics wrapper.
+- `squared-qualtrics.js`
+  Paste this into the Qualtrics question JavaScript editor.
+- `squared-question.html`
+  Paste this into the question HTML editor.
+- `preview.html`
+  Standalone preview for testing the hosted assets before Qualtrics.
+
+## Required hosted assets
+
+Push this repository to GitHub and publish it with GitHub Pages or another HTTPS
+host. Qualtrics respondents need every JavaScript, CSS, and image asset to be
+publicly reachable over HTTPS.
+
+## Qualtrics steps
+
+1. Create a `Text/Graphic` question in Qualtrics.
+2. Open `Add JavaScript` and paste in `qualtrics-v7/squared-qualtrics.js`.
+3. Replace `assetBaseUrl` with your actual GitHub Pages base URL.
+4. Open the question `HTML View` and paste in `qualtrics-v7/squared-question.html`.
+5. In Survey Flow, add Embedded Data fields near the top for:
+   `squared_participant_id`
+   `squared_trial_count`
+   `squared_stroop_score`
+   `squared_flanker_score`
+   `squared_simon_score`
+   `squared_stroop_meanrt`
+   `squared_flanker_meanrt`
+   `squared_simon_meanrt`
+   `squared_summary_json`
+6. Publish and test using the anonymous survey link, not only the Qualtrics editor preview.
+
+## Data note
+
+This wrapper stores summary values in Qualtrics Embedded Data. It does not store
+full trial-by-trial data in Embedded Data by default, because that payload can
+become unwieldy. If you want trial-level data, the safer next step is to send it
+to a server endpoint instead of trying to store the full dataset in Survey Flow.

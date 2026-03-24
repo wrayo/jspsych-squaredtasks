@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Squared Tasks Preview</title>
+    <link rel="stylesheet" href="./lib/jspsych-7.3.1/jspsych.css" />
+    <link rel="stylesheet" href="./squared.css" />
+    <style>
+      body {
+        margin: 0;
+        background: linear-gradient(180deg, #f3f6fb 0%, #e5ebf4 100%);
+        color: #1c2736;
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+
+      #display_stage_background {
+        position: fixed;
+        inset: 0;
+        background-color: #f3f6fb;
+        z-index: -1;
+      }
+
+      #display_stage {
+        position: fixed;
+        left: 1vw;
+        top: 1vh;
+        width: 98vw;
+        height: 98vh;
+        border-radius: 15px;
+        background: #000;
+        box-shadow: 1px 1px 1px #999;
+        overflow-x: hidden;
+        overflow-y: auto;
+      }
+
+      #summary_panel {
+        position: fixed;
+        right: 1rem;
+        bottom: 1rem;
+        width: min(420px, calc(100vw - 2rem));
+        max-height: 40vh;
+        overflow: auto;
+        padding: 0.9rem 1rem;
+        border-radius: 0.9rem;
+        background: rgba(255, 255, 255, 0.94);
+        box-shadow: 0 12px 28px rgba(38, 58, 90, 0.16);
+        font-size: 0.9rem;
+        line-height: 1.45;
+      }
+
+      #summary_panel pre {
+        margin: 0.5rem 0 0;
+        white-space: pre-wrap;
+        word-break: break-word;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="display_stage_background"></div>
+    <div id="display_stage"></div>
+    <div id="summary_panel">
+      Preview mode is active. The summary payload will appear here when the task
+      finishes.
+      <pre id="summary_output"></pre>
+    </div>
+
+    <script>
+      window.squaredTaskConfig = {
+        displayElement: "display_stage",
+        participantId: "preview-participant",
+        online: 1,
+        promptForParticipantId: false,
+        promptForLocation: false,
+        fullscreenMode: false,
+        finishButtonLabel: "Finish Preview",
+        includeTrialData: false
+      };
+
+      window.squaredTaskHooks = {
+        onFinish: function (jsPsychInstance, payload) {
+          document.getElementById("summary_output").textContent = JSON.stringify(payload, null, 2);
+        }
+      };
+    </script>
+    <script src="./lib/jspsych-7.3.1/jspsych.js"></script>
+    <script src="./lib/jspsych-7.3.1/plugin-fullscreen.js"></script>
+    <script src="./lib/jspsych-7.3.1/plugin-html-button-response.js"></script>
+    <script src="./lib/jspsych-7.3.1/plugin-html-keyboard-response.js"></script>
+    <script src="./lib/jspsych-7.3.1/plugin-preload.js"></script>
+    <script src="./lib/jspsych-7.3.1/plugin-survey-multi-choice.js"></script>
+    <script src="./lib/jspsych-7.3.1/plugin-survey-text.js"></script>
+    <script src="./squared-v7-task.js"></script>
+  </body>
+</html>

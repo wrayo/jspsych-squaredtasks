@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Squared Tasks Qualtrics Assets</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg-top: #f3f6fb;
+        --bg-bottom: #e5ebf4;
+        --card-bg: rgba(255, 255, 255, 0.86);
+        --card-border: #ccd7e7;
+        --text: #1c2736;
+        --accent: #1d5fa7;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background: linear-gradient(180deg, var(--bg-top) 0%, var(--bg-bottom) 100%);
+        color: var(--text);
+        font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      }
+
+      main {
+        max-width: 920px;
+        margin: 0 auto;
+        padding: 3rem 1.25rem 4rem;
+        line-height: 1.65;
+      }
+
+      h1,
+      h2 {
+        margin-top: 0;
+      }
+
+      .card {
+        margin-top: 1.5rem;
+        padding: 1.25rem 1.2rem;
+        border: 1px solid var(--card-border);
+        border-radius: 1rem;
+        background: var(--card-bg);
+        box-shadow: 0 15px 40px rgba(46, 72, 112, 0.08);
+      }
+
+      .links {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        margin-top: 1rem;
+      }
+
+      a.button {
+        display: inline-block;
+        padding: 0.85rem 1rem;
+        border-radius: 0.8rem;
+        background: var(--accent);
+        color: #fff;
+        font-weight: 700;
+        text-decoration: none;
+      }
+
+      code {
+        background: rgba(24, 37, 61, 0.08);
+        padding: 0.12rem 0.35rem;
+        border-radius: 0.3rem;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Squared Tasks Qualtrics Assets</h1>
+      <p>
+        This repository hosts a Qualtrics-ready adaptation of the original
+        <code>squared_jspsych</code> task bundle you provided.
+      </p>
+
+      <div class="card">
+        <h2>Hosted Preview</h2>
+        <p>
+          Open the standalone preview first to confirm that the hosted assets
+          load correctly before wiring them into Qualtrics.
+        </p>
+        <div class="links">
+          <a class="button" href="./qualtrics-v7/preview.html">Open Preview</a>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Qualtrics Files</h2>
+        <p>
+          The main integration files live in <code>qualtrics-v7/</code>:
+          <code>squared-qualtrics.js</code>,
+          <code>squared-question.html</code>, and
+          <code>squared-v7-task.js</code>.
+        </p>
+      </div>
+    </main>
+  </body>
+</html>
