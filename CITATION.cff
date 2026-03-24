@@ -1,0 +1,21 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite the preferred citation below."
+title: "jsPsych Squared Tasks Embed into Qualtrics"
+type: software
+authors:
+  - family-names: "Rayo"
+    given-names: "W."
+repository-code: "https://github.com/wrayo/jspsych-squaredtasks"
+url: "https://github.com/wrayo/jspsych-squaredtasks"
+preferred-citation:
+  type: software
+  title: "Squared tasks of attention control for jsPsych"
+  authors:
+    - family-names: "Liceralde"
+      given-names: "Van Rynald T."
+    - family-names: "Burgoyne"
+      given-names: "Alexander P."
+  year: 2023
+  version: "1.0.0"
+  doi: 10.5281/zenodo.8313315
+  url: "https://doi.org/10.5281/zenodo.8313315"
