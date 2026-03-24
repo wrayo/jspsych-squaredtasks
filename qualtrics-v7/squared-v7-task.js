@@ -401,6 +401,7 @@ var createStroopBlock = function(stroop) {
 			countdown(block_start, block_time_limit);
 		},
 		on_finish: function(data) {
+			data.trial_recorded_at = new Date().toISOString();
 			data.block_trial_count = timeout == 1 ? block_trial_count : block_trial_count + 1;
 			data.task = "stroop";
 			data.practice = practice;
@@ -739,6 +740,7 @@ var createFlankerBlock = function(flanker) {
 			countdown(block_start, block_time_limit);
 		},
 		on_finish: function(data) {
+			data.trial_recorded_at = new Date().toISOString();
 			data.block_trial_count = timeout == 1 ? block_trial_count : block_trial_count + 1;
 			data.task = "flanker";
 			data.practice = practice;
@@ -1052,6 +1054,7 @@ var createSimonBlock = function(simon) {
 			countdown(block_start, block_time_limit);
 		},
 		on_finish: function(data) {
+			data.trial_recorded_at = new Date().toISOString();
 			data.block_trial_count = timeout == 1 ? block_trial_count : block_trial_count + 1;
 			data.task = "simon";
 			data.practice = practice;
@@ -1250,6 +1253,8 @@ function compactTrialRecord(trial) {
 		task: trial.task || null,
 		practice: trial.practice,
 		trial_index: typeof trial.trial_index === "number" ? trial.trial_index : null,
+		time_elapsed: typeof trial.time_elapsed === "number" ? trial.time_elapsed : null,
+		trial_recorded_at: trial.trial_recorded_at || null,
 		block_trial_count: typeof trial.block_trial_count === "number" ? trial.block_trial_count : null,
 		item: typeof trial.item === "number" ? trial.item : null,
 		condition: typeof trial.condition === "number" ? trial.condition : null,

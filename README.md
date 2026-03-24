@@ -3,18 +3,50 @@
 This repository adapts the original `squared_jspsych` task bundle into a
 Qualtrics-friendly hosted asset package.
 
-## Attribution
+## Support, Attribution, and Citation
 
-The underlying task comes from the original
-[`squared_jspsych`](https://github.com/vrtliceralde/squared_jspsych?tab=readme-ov-file)
-repository by the task creators. This repository does not claim authorship of
-the task itself; it only provides a wrapper and hosting structure so the task
-can be embedded in Qualtrics.
+This repository provides a Qualtrics-friendly wrapper and hosting structure for
+the original `squared_jspsych` task bundle. It is intended to help researchers
+deploy the task through Qualtrics, but it does not claim authorship of the task
+itself.
 
-If you encounter issues with the task design, stimuli, scoring logic, or the
-original experimental implementation, those concerns should be directed to the
-original task creators. Issues specific to Qualtrics embedding, GitHub Pages
-hosting, or the wrapper/export files in this repository belong here.
+Questions or issues about the task design, stimuli, scoring, or original
+experimental implementation should be directed to the original task creators.
+Questions or issues about the Qualtrics embedding, GitHub Pages hosting, or the
+wrapper/export files in this repository belong here.
+
+Contact points:
+
+- This adaptation: `wrayo`
+- jsPsych implementation adapted here: Van, via the
+  [`squared_jspsych`](https://github.com/vrtliceralde/squared_jspsych?tab=readme-ov-file)
+  repository
+- Task in general: Burgoyne et al. (2023) or Alex Burgoyne
+
+If you use this task, please cite:
+
+1. Burgoyne et al. (2023)
+
+   Nature and measurement of attention control. Journal of Experimental
+   Psychology: General. https://doi.org/10.1037/xge00014082
+
+2. Squared tasks of attention control for jsPsych
+
+   Liceralde, V. R. T. & Burgoyne, A. P. (2023). Squared tasks of attention
+   control for jsPsych (Version 1.0.0) [Computer software].
+   https://doi.org/10.5281/zenodo.8313315
+
+   ```bibtex
+   @misc{liceralde23squared,
+     author = {Van Rynald T. Liceralde and Alexander P. Burgoyne},
+     year = {2023},
+     title = {Squared tasks of attention control for {jsPsych}},
+     howpublished = {\url{https://doi.org/10.5281/zenodo.8313315}}
+   }
+   ```
+
+3. Rayo, W. (2026). jsPsych Squared Tasks Embed into Qualtrics (Version 1.0.0)
+   [workflow]. https://doi.org/10.5281/zenodo.19209170
 
 ## What is in here
 
