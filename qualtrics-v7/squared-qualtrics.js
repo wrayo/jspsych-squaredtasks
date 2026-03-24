@@ -78,7 +78,7 @@ Qualtrics.SurveyEngine.addOnload(function () {
       .fail(function () {
         showFatalError(
           "The Squared task battery could not finish loading.<br>" +
-          "Please capture this screen and contact the study team."
+          "Please capture this screen and contact the researcher or survey administrator."
         );
       });
   }
@@ -87,7 +87,7 @@ Qualtrics.SurveyEngine.addOnload(function () {
     if (!q$) {
       showFatalError(
         "The Qualtrics page libraries did not initialize correctly.<br>" +
-        "Please capture this screen and contact the study team."
+        "Please capture this screen and contact the researcher or survey administrator."
       );
       return;
     }
@@ -159,7 +159,7 @@ Qualtrics.SurveyEngine.addOnload(function () {
   } catch (error) {
     showFatalError(
       "The Colors and Arrows tasks could not start correctly.<br>" +
-      "Please capture this screen and contact the study team.",
+      "Please capture this screen and contact the researcher or survey administrator.",
       error
     );
   }

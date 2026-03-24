@@ -32,6 +32,9 @@ preserve the original battery instead of rewriting it to `jsPsych 6`.
   Paste this into the question HTML editor.
 - `preview.html`
   Standalone preview for testing the hosted assets before Qualtrics.
+- `Squared_Tasks.qsf`
+  Public import template for Qualtrics. By default it points at the hosted
+  assets in this repository's GitHub Pages deployment.
 
 ## Required hosted assets
 
