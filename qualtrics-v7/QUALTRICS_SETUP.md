@@ -3,6 +3,18 @@
 This folder contains the hosted asset bundle for embedding the Squared task
 battery into a Qualtrics survey.
 
+## Attribution and Scope
+
+The original task is from the
+[`squared_jspsych`](https://github.com/vrtliceralde/squared_jspsych?tab=readme-ov-file)
+repository. This repository is only a Qualtrics wrapper and hosting layer
+around that task.
+
+Issues with the task itself, including design decisions, stimuli, scoring
+behavior, and the original experimental implementation, should be directed to
+the original task creators. This wrapper is responsible only for Qualtrics
+embedding, hosted asset loading, and the Qualtrics export format.
+
 ## Important implementation note
 
 The original Squared task code you provided is a working `jsPsych 7.3.1`
@@ -60,3 +72,55 @@ This wrapper stores summary values plus six compact block-level trial JSON field
 in Qualtrics Embedded Data. The trial JSON is intentionally trimmed to the core
 trial columns to reduce size, but it can still be large for some studies, so it
 is still worth validating exported response sizes during piloting.
+
+In Qualtrics, each of these values is stored as its own Embedded Data field in
+Survey Flow. The value in that field is a JSON string. When the task finishes,
+the wrapper writes the Embedded Data values and then calls `clickNextButton()`,
+so the data is captured when Qualtrics advances from the task page.
+
+The six trial-level JSON fields are:
+
+- `squared_practice_stroop_json`
+- `squared_stroop_json`
+- `squared_practice_flanker_json`
+- `squared_flanker_json`
+- `squared_practice_simon_json`
+- `squared_simon_json`
+
+Each of those fields is a JSON array of trial objects for one block only. The
+arrays are split this way to reduce the size of any single Embedded Data field.
+
+Each trial object contains a compact set of task-relevant columns, including:
+
+- `participant_id`
+- `task`
+- `practice`
+- `trial_index`
+- `block_trial_count`
+- `item`
+- `condition`
+- `stim`
+- `response`
+- `rt`
+- `correct_response`
+- `accuracy`
+- `score_after_trial`
+- `timeout`
+
+Task-specific fields are included when relevant:
+
+- Stroop trials can include `stimcolor`, `resp1`, `resp1color`, `resp2`, and `resp2color`
+- Simon trials can include `location`
+
+In addition to those six trial-level JSON fields, the wrapper also stores
+summary-level Embedded Data fields such as:
+
+- `squared_participant_id`
+- `squared_trial_count`
+- `squared_stroop_score`
+- `squared_flanker_score`
+- `squared_simon_score`
+- `squared_stroop_meanrt`
+- `squared_flanker_meanrt`
+- `squared_simon_meanrt`
+- `squared_summary_json`
