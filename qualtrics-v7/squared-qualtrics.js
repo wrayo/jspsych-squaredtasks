@@ -3,6 +3,7 @@ Qualtrics.SurveyEngine.addOnload(function () {
 
   var assetBaseUrl = "https://wrayo.github.io/jspsych-squaredtasks";
   var taskConfig = {
+    assetBaseUrl: assetBaseUrl + "/qualtrics-v7",
     displayElement: "display_stage",
     participantId: "${e://Field/ResponseID}",
     online: 1,

@@ -92,6 +92,7 @@ var stay = 1; // Indicator of whether participant has indicated that they still 
 var items_stroop = Array.from(Array(16).keys()); // Array from 0-15
 var items_flanker = Array.from(Array(16).keys()); // Array from 0-15
 var items_simon = Array.from(Array(8).keys()); // Array from 0-7
+var asset_base_url = (squaredTaskConfig.assetBaseUrl || ".").replace(/\/$/, "");
 var enable_local_save = squaredTaskConfig.enableLocalSave === true;
 var prompt_for_participant_id = !subject && squaredTaskConfig.promptForParticipantId !== false;
 var prompt_for_location = typeof squaredTaskConfig.online === "number" ? false : squaredTaskConfig.promptForLocation === true;
@@ -109,6 +110,14 @@ function setParticipantId(participantId) {
 	jsPsych.data.addProperties({
 		participant_id: participantId
 	});
+}
+
+function resolveAssetPath(relativePath) {
+	if (/^(https?:)?\/\//.test(relativePath) || relativePath.indexOf("data:") === 0) {
+		return relativePath;
+	}
+
+	return asset_base_url + "/" + relativePath.replace(/^\.\//, "");
 }
 
 // Function to countdown to 0
@@ -553,10 +562,10 @@ var stroop_task = { timeline: [intro_stroop, threetwoone, block_stroop_practice,
 //    - mr_fl:  mid right, flankers left
 //	  - ml_fr:  mid left, flankers right
 
-const ar = "ar.PNG";
-const al = "al.PNG";
-const mr_fl = "mr_fl.PNG";
-const ml_fr = "ml_fr.PNG";
+const ar = resolveAssetPath("ar.PNG");
+const al = resolveAssetPath("al.PNG");
+const mr_fl = resolveAssetPath("mr_fl.PNG");
+const ml_fr = resolveAssetPath("ml_fr.PNG");
 
 // 1. Create object that has all the possible stimuli for the task (stimuli_flanker)
 var stimuli_flanker = [
@@ -879,8 +888,8 @@ var flanker_task = {timeline: [intro_flanker, threetwoone, block_flanker_practic
 //		f. block_main_simon -> main task
 //		g. conclusion_simon -> reports final score to participant
 
-const rarr = "rarr.PNG";
-const larr = "larr.PNG";
+const rarr = resolveAssetPath("rarr.PNG");
+const larr = resolveAssetPath("larr.PNG");
 
 // 1. Create object that has all the possible stimuli for the task (stimuli_simon)
 var stimuli_simon = [
