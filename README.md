@@ -60,6 +60,8 @@ If you use this task, please cite:
   The HTML snippet you paste into that question's HTML editor.
 - `qualtrics-v7/QUALTRICS_SETUP.md`
   Setup notes and field recommendations.
+- `qualtrics-v7/QUALTRICS_FROM_SCRATCH.md`
+  Step-by-step guide for building the Qualtrics survey manually instead of importing the QSF.
 - `qualtrics-v7/Squared_Tasks.qsf`
   Public Qualtrics import template wired to the hosted assets in this repository.
 

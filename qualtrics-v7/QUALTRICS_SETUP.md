@@ -35,6 +35,9 @@ preserve the original battery instead of rewriting it to `jsPsych 6`.
 - `Squared_Tasks.qsf`
   Public import template for Qualtrics. By default it points at the hosted
   assets in this repository's GitHub Pages deployment.
+- `QUALTRICS_FROM_SCRATCH.md`
+  Manual build guide for researchers who want to create the Qualtrics survey
+  question-by-question instead of importing the QSF.
 
 ## Required hosted assets
 
