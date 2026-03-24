@@ -1244,6 +1244,58 @@ function summarizeTaskBlock(taskName, practiceFlag) {
 	};
 }
 
+function compactTrialRecord(trial) {
+	var compact = {
+		participant_id: trial.participant_id || subject || null,
+		task: trial.task || null,
+		practice: trial.practice,
+		trial_index: typeof trial.trial_index === "number" ? trial.trial_index : null,
+		block_trial_count: typeof trial.block_trial_count === "number" ? trial.block_trial_count : null,
+		item: typeof trial.item === "number" ? trial.item : null,
+		condition: typeof trial.condition === "number" ? trial.condition : null,
+		stim: trial.stim || null,
+		response: typeof trial.response === "number" ? trial.response : null,
+		rt: typeof trial.rt === "number" ? trial.rt : null,
+		correct_response: typeof trial.correct_response === "number" ? trial.correct_response : null,
+		accuracy: typeof trial.accuracy === "number" ? trial.accuracy : null,
+		score_after_trial: typeof trial.score_after_trial === "number" ? trial.score_after_trial : null,
+		timeout: typeof trial.timeout === "number" ? trial.timeout : null
+	};
+
+	if (trial.stimcolor) {
+		compact.stimcolor = trial.stimcolor;
+	}
+
+	if (trial.location) {
+		compact.location = trial.location;
+	}
+
+	if (trial.resp1) {
+		compact.resp1 = trial.resp1;
+	}
+
+	if (trial.resp1color) {
+		compact.resp1color = trial.resp1color;
+	}
+
+	if (trial.resp2) {
+		compact.resp2 = trial.resp2;
+	}
+
+	if (trial.resp2color) {
+		compact.resp2color = trial.resp2color;
+	}
+
+	return compact;
+}
+
+function collectTrialBlock(taskName, practiceFlag) {
+	return jsPsych.data.get().filter({
+		task: taskName,
+		practice: practiceFlag
+	}).values().map(compactTrialRecord);
+}
+
 function buildExperimentPayload() {
 	var payload = {
 		participant_id: subject,
@@ -1267,6 +1319,14 @@ function buildExperimentPayload() {
 				practice: summarizeTaskBlock("simon", 1),
 				main: summarizeTaskBlock("simon", 0)
 			}
+		},
+		trial_data_blocks: {
+			practice_stroop: collectTrialBlock("stroop", 1),
+			stroop: collectTrialBlock("stroop", 0),
+			practice_flanker: collectTrialBlock("flanker", 1),
+			flanker: collectTrialBlock("flanker", 0),
+			practice_simon: collectTrialBlock("simon", 1),
+			simon: collectTrialBlock("simon", 0)
 		}
 	};
 

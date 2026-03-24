@@ -43,11 +43,17 @@ publicly reachable over HTTPS.
    `squared_flanker_meanrt`
    `squared_simon_meanrt`
    `squared_summary_json`
+   `squared_practice_stroop_json`
+   `squared_stroop_json`
+   `squared_practice_flanker_json`
+   `squared_flanker_json`
+   `squared_practice_simon_json`
+   `squared_simon_json`
 6. Publish and test using the anonymous survey link, not only the Qualtrics editor preview.
 
 ## Data note
 
-This wrapper stores summary values in Qualtrics Embedded Data. It does not store
-full trial-by-trial data in Embedded Data by default, because that payload can
-become unwieldy. If you want trial-level data, the safer next step is to send it
-to a server endpoint instead of trying to store the full dataset in Survey Flow.
+This wrapper stores summary values plus six compact block-level trial JSON fields
+in Qualtrics Embedded Data. The trial JSON is intentionally trimmed to the core
+trial columns to reduce size, but it can still be large for some studies, so it
+is still worth validating exported response sizes during piloting.

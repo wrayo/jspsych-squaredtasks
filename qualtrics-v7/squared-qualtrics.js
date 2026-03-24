@@ -12,7 +12,7 @@ Qualtrics.SurveyEngine.addOnload(function () {
     promptForLocation: false,
     fullscreenMode: false,
     finishButtonLabel: "Continue",
-    includeTrialData: false
+    includeTrialData: true
   };
 
   function valueOrBlank(value) {
@@ -110,6 +110,7 @@ Qualtrics.SurveyEngine.addOnload(function () {
       onFinish: function (jsPsychInstance, payload) {
         var prefix = "squared_";
         var summary = payload.summary || {};
+        var trialBlocks = payload.trial_data_blocks || {};
 
         Qualtrics.SurveyEngine.setEmbeddedData(prefix + "participant_id", valueOrBlank(payload.participant_id));
         Qualtrics.SurveyEngine.setEmbeddedData(prefix + "trial_count", valueOrBlank(payload.trial_count));
@@ -131,6 +132,12 @@ Qualtrics.SurveyEngine.addOnload(function () {
         );
 
         Qualtrics.SurveyEngine.setEmbeddedData(prefix + "summary_json", JSON.stringify(summary));
+        Qualtrics.SurveyEngine.setEmbeddedData(prefix + "practice_stroop_json", JSON.stringify(trialBlocks.practice_stroop || []));
+        Qualtrics.SurveyEngine.setEmbeddedData(prefix + "stroop_json", JSON.stringify(trialBlocks.stroop || []));
+        Qualtrics.SurveyEngine.setEmbeddedData(prefix + "practice_flanker_json", JSON.stringify(trialBlocks.practice_flanker || []));
+        Qualtrics.SurveyEngine.setEmbeddedData(prefix + "flanker_json", JSON.stringify(trialBlocks.flanker || []));
+        Qualtrics.SurveyEngine.setEmbeddedData(prefix + "practice_simon_json", JSON.stringify(trialBlocks.practice_simon || []));
+        Qualtrics.SurveyEngine.setEmbeddedData(prefix + "simon_json", JSON.stringify(trialBlocks.simon || []));
 
         cleanup();
         qthis.clickNextButton();
